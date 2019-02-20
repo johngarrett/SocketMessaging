@@ -45,8 +45,11 @@ def broadcast(msg, prefix=""):  # prefix is for name identification.
         sock.send(bytes(prefix, "utf8") + msg)
 
 if __name__ == "__main__":
-    SERVER.listen(5)  #5 connections at max.
-    print("Waiting for connection...")
+    HOST = input("Host (default is 127.0.0.1): ")
+    PORT = input("Port (default is 33000): ")
+    _max = int(input("Max connections: "))
+    SERVER.listen(_max) 
+    print("Waiting for a connection...")
     ACCEPT_THREAD = Thread(target=accept_incoming_connections)
     ACCEPT_THREAD.start() #start the loop
     ACCEPT_THREAD.join() 
