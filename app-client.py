@@ -25,7 +25,6 @@ def create_request(action, value):
             content=bytes(action + value, encoding="utf-8"),
         )
 
-
 def start_connection(host, port, request):
     addr = (host, port)
     print("starting connection to", addr)
@@ -64,5 +63,5 @@ try:
             break
 except KeyboardInterrupt:
     print("caught keyboard interrupt, exiting")
-#finally:
-  #  sel.close()
+finally:
+    sel.close()

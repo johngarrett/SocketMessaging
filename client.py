@@ -4,24 +4,23 @@ from threading import Thread
 def receive():
     while True:
         msg = client_socket.recv(BUFSIZ).decode("utf8")
-        if msg == "{quit}":
+        if msg == "/quit":
             client_socket.close()
             break
         if not msg:
             break
         print(msg)
 
-
 def send():
     while True:
         msg = input()
         client_socket.send(bytes(msg, "utf8"))
-        if msg == "{quit}":
+        if msg == "/quit":
             break
 
 
-HOST = input('Enter host: ')
-PORT = input('Enter port: ')
+HOST = input('Enter host(default is 127.0.0.1): ') or '127.0.0.1'
+PORT = input('Enter port(default is 33000): ')
 if not PORT:
     PORT = 33000
 else:
