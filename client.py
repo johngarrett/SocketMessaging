@@ -9,7 +9,7 @@ def receive():
             break
         if not msg:
             break
-    print(msg)
+        print(msg)
 
 def send():
     while True:
